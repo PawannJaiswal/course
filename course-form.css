@@ -1,0 +1,108 @@
+/* Reset some default styles */
+body, h2, p, label {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Body styles */
+body {
+    background-color: #f9f9f9;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Centering the container */
+.container {
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+/* Header styles */
+h2 {
+    font-size: 1.8rem;
+    color: #444;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Paragraph (Course Fee) */
+p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #555;
+}
+
+/* Form styles */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Labels */
+label {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    color: #444;
+}
+
+/* Input fields and dropdowns */
+input[type="text"],
+input[type="email"],
+select {
+    padding: 10px;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus {
+    border: 1px solid #007BFF;
+}
+
+/* Button */
+button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .container {
+        padding: 15px 20px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Enrollment - Nirmal Academy</title>
+    <link rel="stylesheet" href="course-form.css">
+</head>
+<body>
+    <div class="container">
+        <h2 id="course-title">Enroll in Course</h2>
+        <p><strong>Course Fee:</strong> ₹<span id="course-fee">0</span></p>
+
+        <form action="/enroll" method="POST">
+            <input type="hidden" id="course-id" name="course_id">
+            <input type="hidden" id="course-fee-hidden" name="course_fee">
+            
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone" required>
+            
+            <label for="standard">Standard:</label>
+            <select id="standard" name="standard" required onchange="updateFee()">
+                <option value="8">8th Standard</option>
+                <option value="9">9th Standard</option>
+                <option value="10">10th Standard</option>
+                <option value="12">12th Standard</option>
+            </select>
+            
+            <button type="submit">Enroll</button>
+        </form>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const courseName = urlParams.get('name');
+        const courseFee = urlParams.get('fee');
+        const courseId = urlParams.get('id');
+
+        const feeMap = {
+            "8": 4000,
+            "9": 4500,
+            "10": 5000,
+            "12": 6000
+        };
+
+        if (courseName && courseFee && courseId) {
+            document.getElementById('course-title').textContent = `Enroll in ${decodeURIComponent(courseName)}`;
+            document.getElementById('course-fee').textContent = courseFee;
+            document.getElementById('course-id').value = courseId;
+            document.getElementById('course-fee-hidden').value = courseFee;
+        } else {
+            alert("Course details are missing! Redirecting...");
+            window.location.href = "courses.html";
+        }
+
+        // Function to update fee based on selected standard
+        function updateFee() {
+            const standard = document.getElementById('standard').value;
+            const newFee = feeMap[standard];
+            document.getElementById('course-fee').textContent = newFee;
+            document.getElementById('course-fee-hidden').value = newFee;
+        }
+    </script>
+</body>
+</html>
