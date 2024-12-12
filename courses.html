@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses - Nirmal Academy</title>
+    <link rel="stylesheet" href="courses.css">
+</head>
+<body>
+    <!-- Sticky Navbar -->
+    <header>
+        <nav id="navbar" class="navbar">
+            <div class="logo">Nirmal Academy</div>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Courses Section -->
+    <section id="courses" class="courses-section">
+        <div class="courses-search">
+            <input type="text" id="search-bar" placeholder="Search for courses..." onkeyup="filterCourses()">
+        </div>
+
+        <div class="course-recommendations">
+            <h2>Recommended Courses</h2>
+            <div class="courses-list">
+                <!-- Dynamic Course List -->
+                <div class="course-item" data-grade="8">
+                    <h3>For STD 8</h3>
+                    <p>Basics of Maths, Science, SST</p>
+                    <p>Fee: ₹4000</p>
+                    <button onclick="goToForm('8', 'Basics of Maths, Science, SST', '4000')">Enroll Now</button>
+                </div>
+                <div class="course-item" data-grade="9">
+                    <h3>For STD 9</h3>
+                    <p>Science, Maths, SST</p>
+                    <p>Fee: ₹4500</p>
+                    <button onclick="goToForm('9', 'Science, Maths, SST', '4500')">Enroll Now</button>
+                </div>
+                <div class="course-item" data-grade="10">
+                    <h3>For STD 10</h3>
+                    <p>Physics, Chemistry, Maths, SST</p>
+                    <p>Fee: ₹5000</p>
+                    <button onclick="goToForm('10', 'Physics, Chemistry, Maths, SST', '5000')">Enroll Now</button>
+                </div>
+                <div class="course-item" data-grade="12">
+                    <h3>For STD 12</h3>
+                    <p>Advanced Physics, Biology, Maths, Chemistry</p>
+                    <p>Fee: ₹6000</p>
+                    <button onclick="goToForm('12', 'Advanced Physics, Biology, Maths, Chemistry', '6000')">Enroll Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function filterCourses() {
+            const searchQuery = document.getElementById('search-bar').value.toLowerCase();
+            const courses = document.querySelectorAll('.course-item');
+            
+            courses.forEach(course => {
+                const courseTitle = course.querySelector('h3').textContent.toLowerCase();
+                if (courseTitle.includes(searchQuery)) {
+                    course.style.display = 'block';
+                } else {
+                    course.style.display = 'none';
+                }
+            });
+        }
+
+        function goToForm(id, name, fee) {
+            if (!id || !name || !fee) {
+                alert("Something went wrong. Missing course details!");
+                return;
+            }
+            const encodedName = encodeURIComponent(name);
+            window.location.href = `course-form.html?id=${id}&name=${encodedName}&fee=${fee}`;
+        }
+    </script>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Nirmal Academy Classes. All rights reserved.</p>
+    </footer>
+</body>
+</html>
