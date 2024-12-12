@@ -1,6 +1,6 @@
 // List of resources
 const resources = [
-    { title: "Mathematics", url: "resources/Maharashtra-board-class-1-Maths-Textbook.pdf", description: "1 Standard" }
+    { title: "Mathematics", url: "Maharashtra-board-class-1-Maths-Textbook.pdf", description: "1 Standard" }
 ];
 
 // Get the resource list container
